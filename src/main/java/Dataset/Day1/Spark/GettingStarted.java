@@ -1,4 +1,4 @@
-package Dataset.Day2;
+package Dataset.Day1.Spark;
 
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.Dataset;
