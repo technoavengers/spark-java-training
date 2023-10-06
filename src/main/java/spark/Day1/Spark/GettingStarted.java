@@ -34,7 +34,7 @@ public class GettingStarted {
         //Dataset<Row> filteredCust = dataset.filter("age>20");
 
         //print the result
-        filteredCust.write().mode("overwrite").csv("file:///C:\\Users\\Navdeep\\Trainings\\Spark-Java/output1");
+        filteredCust.show();
 
         //Stop spark session to release resources
         spark.stop();
