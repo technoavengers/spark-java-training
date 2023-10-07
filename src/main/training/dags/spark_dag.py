@@ -19,7 +19,7 @@ config_file = os.path.join('C:', 'Users', 'Navdeep', 'config')
 
 
 volume_mount = k8s.V1VolumeMount(
-    {'name': 'jar-volume', 'mount_path': '/opt/spark/app', 'sub_path': None, 'read_only': True}
+    {'name': 'jar-volume', 'mount_path': '/opt/Spark/app', 'sub_path': None, 'read_only': True}
 )
 
 volume = k8s.V1Volume(
@@ -32,23 +32,23 @@ volume = k8s.V1Volume(
 spark_task = KubernetesPodOperator(
     namespace='default',  # Replace with the appropriate namespace
     image="technoavengers/myspark_image:4.0",  # Docker image of your Spark application
-    cmds=["spark-submit"],
-    service_account_name='my-spark-sa',
+    cmds=["Spark-submit"],
+    service_account_name='my-Spark-sa',
     volume_mounts=volume_mount,
     volumes=volume,
     arguments=[
         '--class', 'InMemoryDataset',
         '--master', 'k8s://https://kubernetes.default.svc:443',
         '--deploy-mode', 'cluster',
-        '--conf', 'spark.executor.instances=2',  # Set the desired number of executors
-        '--conf', 'spark.kubernetes.authenticate.driver.serviceAccountName=my-spark-sa',
-        '--conf', 'spark.kubernetes.driver.container.image=technoavengers/myspark_image:4.0',
-        '--conf', 'spark.kubernetes.container.image=technoavengers/myspark_image:4.0',
-        '--conf','spark.kubernetes.file.upload.path=/opt/spark/temp',
-        '--files', '/opt/spark/app/myspark.jar',
-        '/opt/spark/app/myspark.jar'
+        '--conf', 'Spark.executor.instances=2',  # Set the desired number of executors
+        '--conf', 'Spark.kubernetes.authenticate.driver.serviceAccountName=my-Spark-sa',
+        '--conf', 'Spark.kubernetes.driver.container.image=technoavengers/myspark_image:4.0',
+        '--conf', 'Spark.kubernetes.container.image=technoavengers/myspark_image:4.0',
+        '--conf','Spark.kubernetes.file.upload.path=/opt/Spark/temp',
+        '--files', '/opt/Spark/app/myspark.jar',
+        '/opt/Spark/app/myspark.jar'
     ],
-    name="spark-task",
+    name="Spark-task",
     task_id="spark_task",
     get_logs=True,
     dag=dag,
