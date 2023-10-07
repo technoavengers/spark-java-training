@@ -1,9 +1,11 @@
-package Spark.Spark_Integrations;
+package main.training.Spark.Spark_Integrations;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
+import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.SaveMode;
+
 
 public class Working_With_Delta {
     public static void main(String[] args) {
@@ -13,10 +15,9 @@ public class Working_With_Delta {
                 .setAppName("DeltaLakeExample");
         SparkSession spark = SparkSession.builder()
                 .config(conf)
+                .master("local[*]")
                 .getOrCreate();
 
-        // Define the path to your Delta Lake table
-        String deltaTablePath = "path/to/delta/table";
 
         //Create a Dataset from customers.csv file
         Dataset<Row> dataset = spark.read().option("header", true).csv("src/main/resources/customers.csv");

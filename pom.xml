@@ -28,7 +28,13 @@
         <dependency>
             <groupId>io.delta</groupId>
             <artifactId>delta-core_2.12</artifactId>
-            <version>1.0.0</version> <!-- Use the Delta Lake version you prefer -->
+            <version>2.0.2</version> <!-- Use the Delta Lake version you prefer -->
+        </dependency>
+
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.1-jre</version> <!-- Use the appropriate version -->
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs -->
