@@ -34,7 +34,11 @@ public class challenge {
 
         double result;
 
-        //write switch case statements to handle all scenarios
+        //TODO: write switch case statements to handle all scenarios
+        /**
+         * Depending on the chosen operation (1 for addition, 2 for subtraction, 3 for multiplication, and 4 for division), the program performs the corresponding calculation and displays the result.
+         * If the user chooses an invalid option, the default case handles it and informs the user about the invalid choice
+         */
 
         scanner.close();
     }
