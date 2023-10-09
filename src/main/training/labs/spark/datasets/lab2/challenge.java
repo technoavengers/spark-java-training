@@ -1,36 +1,40 @@
 package main.training.labs.spark.datasets.lab2;
 
-/**
- * In this Spark Java application:
- * We create a Spark configuration and a SparkSession.
- * We define a custom schema for the ratings.csv file.
- * We read the ratings.csv file using spark.read() with the custom schema.
- * We show the original ratings data.
- * We filter movies with ratings greater than 3 using the filter transformation.
- * We add a new column "category" based on the rating using the withColumn API and the when and otherwise functions from org.apache.spark.sql.functions.
- * We show the filtered and categorized data.
- */
+import org.apache.spark.SparkConf;
+import org.apache.spark.sql.*;
+
+import java.util.Arrays;
 
 public class challenge {
-
     public static void main(String[] args) {
-        //TODO Step1 --> Create a Spark configuration and SparkSession
+        // Step 1: Create a SparkConf and set the application name
+        SparkConf sparkConf = new SparkConf()
+                .setAppName("SparkDatasetMapFilterExample")
+                .set("spark.testing.memory", "471859200")
+                .setMaster("local[*]");;
 
-        //TODO Step2 -->  Define the custom schema for the ratings.csv file
+        // Step 2: Create a SparkSession using the SparkConf
+        SparkSession spark = SparkSession.builder().config(sparkConf).getOrCreate();
 
-        //TODO Step3 --> Read the ratings_new.csv file with the custom schema
+        try {
+            // Step 3: Create a Dataset of integers
+            Encoder<String> stringEncoder = Encoders.STRING();
+            Dataset<String> nameDataset = spark.createDataset(
+                    Arrays.asList("alice","sam","arya","andy"),
+                    stringEncoder
+            );
 
-        //TODO Step4 --> Show the original ratings data
+            nameDataset.show();
+            //TODO Step 4: Use the withColumn to map each  element to upper
+            //Use upper(col("col_name")) inbuilt function
 
-        //TODO Step5 --> Filter movies with ratings greater than 3
+            //TODO Step 6: Show the results
 
-        //TODO Step6 --> Add a new column "category" based on the rating
 
-        //TODO Step7 -->  Show the filtered and categorized data
-
-        //TODO Step8 -->  Stop the SparkSession
+        } finally {
+            // Step 7: Stop the SparkSession to release resources
+            spark.stop();
+        }
     }
-
-
-
 }
+

@@ -1,54 +1,47 @@
 package main.training.labs.spark.datasets.lab2;
 
 import org.apache.spark.SparkConf;
+import org.apache.spark.api.java.function.FilterFunction;
+import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.*;
-import org.apache.spark.sql.types.DataTypes;
-import org.apache.spark.sql.types.StructType;
+import org.apache.spark.sql.functions.*;
+
+import java.util.Arrays;
+
+import static org.apache.spark.sql.functions.col;
+import static org.apache.spark.sql.functions.upper;
+
 public class solution {
-
-
     public static void main(String[] args) {
-        // Create a Spark configuration and SparkSession
-        SparkConf conf = new SparkConf()
-                .setAppName("MovieRatingAnalysis")
+        // Step 1: Create a SparkConf and set the application name
+        SparkConf sparkConf = new SparkConf()
+                .setAppName("SparkDatasetMapFilterExample")
                 .set("spark.testing.memory", "471859200")
-                .setMaster("local[*]");
+                .setMaster("local[*]");;
 
-        SparkSession spark = SparkSession.builder().config(conf).getOrCreate();
+        // Step 2: Create a SparkSession using the SparkConf
+        SparkSession spark = SparkSession.builder().config(sparkConf).getOrCreate();
 
-        // Define the custom schema for the ratings.csv file
-        StructType schema = new StructType()
-                .add("userId", DataTypes.IntegerType, false)
-                .add("movieId", DataTypes.IntegerType, false)
-                .add("rating", DataTypes.DoubleType, false)
-                .add("timestamp", DataTypes.LongType, false);
+        try {
+            // Step 3: Create a Dataset of integers
+            Encoder<String> stringEncoder = Encoders.STRING();
+            Dataset<String> nameDataset = spark.createDataset(
+                    Arrays.asList("alice","sam","arya","andy"),
+                    stringEncoder
+            );
 
-        // Read the ratings.csv file with the custom schema
-        Dataset<Row> ratingsDF = spark.read()
-                .option("header", "true")
-                .schema(schema)
-                .csv("src/main/resources/ratings_new.csv");
+            nameDataset.show();
+            // Step 4: Use the withColumn to map each  element to upper
+            //Use upper(col("col_name")) inbuilt function
+            Dataset<Row> upperDataset= nameDataset.withColumn("value",upper(col("value")));
 
-        // Show the original ratings data
-        System.out.println("Original Ratings Data:");
-        ratingsDF.show();
+            upperDataset.show();
+            // Step 6: Show the results
 
-        // Filter movies with ratings greater than 3
-        Dataset<Row> filteredRatingsDF = ratingsDF.filter(ratingsDF.col("rating").gt(3));
-
-        // Add a new column "category" based on the rating
-        Dataset<Row> categorizedRatingsDF = filteredRatingsDF.withColumn("category",
-                org.apache.spark.sql.functions.when(filteredRatingsDF.col("rating").lt(2), "Average")
-                        .when(filteredRatingsDF.col("rating").geq(2).and(filteredRatingsDF.col("rating").lt(4)), "Good")
-                        .otherwise("Excellent")
-        );
-
-        // Show the filtered and categorized data
-        System.out.println("Filtered and Categorized Ratings Data:");
-        categorizedRatingsDF.show();
-
-        // Stop the SparkSession
-        spark.stop();
+        } finally {
+            // Step 7: Stop the SparkSession to release resources
+            spark.stop();
+        }
     }
-
 }
+

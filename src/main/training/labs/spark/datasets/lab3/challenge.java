@@ -1,30 +1,36 @@
 package main.training.labs.spark.datasets.lab3;
 
-
-import org.apache.spark.SparkConf;
-import org.apache.spark.sql.*;
+/**
+ * In this Spark Java application:
+ * We create a Spark configuration and a SparkSession.
+ * We define a custom schema for the ratings.csv file.
+ * We read the ratings.csv file using spark.read() with the custom schema.
+ * We show the original ratings data.
+ * We filter movies with ratings greater than 3 using the filter transformation.
+ * We add a new column "category" based on the rating using the withColumn API and the when and otherwise functions from org.apache.spark.sql.functions.
+ * We show the filtered and categorized data.
+ */
 
 public class challenge {
 
     public static void main(String[] args) {
-        // Create a Spark configuration and SparkSession
-        SparkConf conf = new SparkConf()
-                .setAppName("MovieRatingAnalysis")
-                .set("spark.testing.memory", "471859200")
-                .setMaster("local[*]");
+        //TODO Step1 --> Create a Spark configuration and SparkSession
 
-        SparkSession spark = SparkSession.builder().config(conf).getOrCreate();
+        //TODO Step2 -->  Define the custom schema for the ratings.csv file
 
-        //TODO: Step1 --> Read the ratings_new.csv file into a DataFrame
+        //TODO Step3 --> Read the ratings_new.csv file with the custom schema
 
-        //TODO: Step2 --> Show the original ratings data
+        //TODO Step4 --> Show the original ratings data
 
-        //TODO: Step3 --> Group the data by "movieId" and calculate the average rating for each movie
+        //TODO Step5 --> Filter movies with ratings greater than 3
 
-        //TODO: Step4 --> Show the average rating for each movie
+        //TODO Step6 --> Add a new column "category" based on the rating
 
-        // Stop the SparkSession
-        spark.stop();
+        //TODO Step7 -->  Show the filtered and categorized data
+
+        //TODO Step8 -->  Stop the SparkSession
     }
-}
 
+
+
+}
