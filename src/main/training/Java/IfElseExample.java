@@ -18,9 +18,12 @@ public class IfElseExample {
         if (number % 2 == 0) {
             // If the condition is true (number is even), execute this block
             System.out.println(number + " is an even number.");
-        } else {
+        } else if(number%3 ==0) {
             // If the condition is false (number is odd), execute this block
-            System.out.println(number + " is an odd number.");
+            System.out.println(number + " is an divisble of 3 number.");
+        }
+        else{
+            System.out.println("ood number other than 3");
         }
 
         // Demonstrate the use of nested if-else statements

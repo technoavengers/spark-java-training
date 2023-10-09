@@ -1,4 +1,4 @@
-package Spark.Working_with_Datasets;
+package main.training.Spark.Working_with_Datasets;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.function.FilterFunction;

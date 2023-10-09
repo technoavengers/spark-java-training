@@ -1,11 +1,4 @@
-package labs.spark.lab1;
-
-import org.apache.spark.SparkConf;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
-import org.apache.spark.sql.types.DataTypes;
-import org.apache.spark.sql.types.StructType;
+package main.training.labs.spark.datasets.lab2;
 
 /**
  * In this Spark Java application:

@@ -1,4 +1,4 @@
-package labs.spark.lab2;
+package main.training.labs.spark.datasets.lab3;
 
 
 import org.apache.spark.SparkConf;

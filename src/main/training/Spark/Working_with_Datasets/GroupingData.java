@@ -1,4 +1,4 @@
-package Spark.Working_with_Datasets;
+package main.training.Spark.Working_with_Datasets;
 
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;

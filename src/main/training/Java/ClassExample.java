@@ -15,6 +15,10 @@ class Person {
     String name;
     int age;
 
+    public Person(){
+
+    }
+
     // Constructor method
     public Person(String name, int age) {
         // Initialize the instance variables with the provided values
@@ -28,6 +32,35 @@ class Person {
         System.out.println("Age: " + age);
     }
 }
+
+class Manager extends  Person{
+
+    public Manager(String name,int age){
+        super(name,age);
+    }
+
+    public void displayInfo() {
+        System.out.println("Name from child: " + name);
+        System.out.println("Age from child: " + age);
+    }
+
+    public void displayInfo(String s) {
+        System.out.println("This overloaded method with name : " + name);
+        System.out.println("Age from child: " + age);
+        System.out.println("extra paramater: " + s);
+    }
+
+
+
+
+}
+
+class Employee extends  Person{
+    public void getSalary(){
+
+    }
+}
+
 
 public class ClassExample {
     public static void main(String[] args) {
@@ -44,6 +77,17 @@ public class ClassExample {
         // Access instance variables and methods for the second person
         System.out.println("\nPerson 2:");
         person2.displayInfo();
+
+        Manager m  = new Manager("Namit",30);
+        m.displayInfo();
+        m.displayInfo("Overloaded");
+
+
+        Person p1 = new Employee();
+        Person p2 = new Manager("hds",34);
+
+
+
     }
 }
 

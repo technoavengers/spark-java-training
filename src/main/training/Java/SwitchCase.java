@@ -14,10 +14,17 @@ import java.util.Scanner;
 
 public class SwitchCase {
 
+    public static void  getInfo(double balance){
+        System.out.println(balance);
+
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         double balance = 1000.0; // Initial account balance
         boolean isRunning = true;
+
+        getInfo(balance);
 
         System.out.println("Welcome to Your Bank Account!");
 
