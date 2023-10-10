@@ -1,0 +1,14 @@
+customer_id,first_name,last_name,email,age,gender,purchase_date,product_id,product_name,purchase_amount
+1,John,Doe,johndoe@example.com,30,Male,2023-01-15,101,Widget A,50.00
+2,Jane,Smith,janesmith@example.com,,Female,2023-01-16,102,Widget B,75.00
+3,Bob,Johnson,bobjohnson@example.com,35,M,2023-01-17,103,Widget C,60.00
+4,Alice,Williams,alicewilliams@example.com,32,F,2023-01-18,101,Widget A,45.00
+5,Chris,Evans,chrisevans@example.com,,Male,2023-01-19,104,Widget D,80.00
+6,Sarah,Parker,sarahparker@example.com,27,F,2023-01-20,102,Widget B,70.00
+7,David,Anderson,davidanderson@example.com,33,Male,2023-01-21,105,Widget E,55.00
+8,Emily,Johnson,emilyjohnson@example.com,29,Female,2023-01-22,101,Widget A,50.00
+9,Michael,Smith,michaelsmith@example.com,36,M,2023-01-23,106,Widget F,90.00
+10,Susan,Davis,susandavis@example.com,31,Female,2023-01-24,102,Widget B,75.00
+8,Emily,Johnson,emilyjohnson@example.com,29,Female,2023-01-22,101,Widget A,50.00
+9,Michael,Smith,michaelsmith@example.com,36,M,2023-01-23,106,Widget F,90.00
+
