@@ -13,10 +13,10 @@ public class challenge {
             //JavaRDD<String> namesRDD = sparkContext.parallelize(Arrays.asList("Alice", "Bob", "Charlie", "David", "Eva"));
 
             // TODO Step 4: Use a map transformation with an anonymous function to convert names to uppercase
-            // There is an inbuilt spark function called "toUpperCase()" inside the map, you can apply on each record
+            // There is an inbuilt string function called "toUpperCase()" & use it inside the map, you can apply on each record
 
             // TODO Step 5: Use a filter transformation with an anonymous function to filter names that start with 'A'
-           //There is an inbuilt spark function called "startsWith('A')" inside the filter , you can apply on each element
+           //There is an inbuilt string function called "startsWith("A")" & use it inside the filter , you can apply on each element
 
             // TODO Step 6: Uncomment below code to print the results of RDD wit upper case
             //System.out.println("Uppercase Names:");
