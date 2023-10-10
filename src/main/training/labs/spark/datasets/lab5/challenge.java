@@ -1,37 +1,33 @@
 package main.training.labs.spark.datasets.lab5;
 
-import org.apache.spark.SparkConf;
-import org.apache.spark.sql.Dataset;
-import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
 
-import static org.apache.spark.sql.functions.avg;
+import org.apache.spark.sql.*;
+
+import java.util.Arrays;
 
 public class challenge {
 
     public static void main(String[] args) {
-        // Create a Spark configuration and SparkSession
-        SparkConf conf = new SparkConf()
-                .setAppName("MovieRatingAnalysis")
-                .set("spark.testing.memory", "471859200")
-                .setMaster("local[*]");
+        // Create a SparkSession
+        SparkSession spark = SparkSession.builder()
+                .appName("SparkJavaUDFExample")
+                .master("local[*]")  // Use local mode for simplicity, replace with your cluster URL in a real environment
+                .config("spark.testing.memory", "471859200")
+                .getOrCreate();
 
-        SparkSession spark = SparkSession.builder().config(conf).getOrCreate();
+        // Create a DataFrame
+        Encoder<String> stringEncoder = Encoders.STRING();
+        Dataset<Row> df = spark.createDataset(
+                Arrays.asList("John", "Doe", "Alice", "Smith"),
+                stringEncoder
+        ).toDF();
 
-        // Read the ratings.csv file into a DataFrame
-        Dataset<Row> ratingsDF = spark.read()
-                .option("header", "true")
-                .option("inferSchema", "true")
-                .csv("src/main/resources/ratings_new.csv");
+        // TODO : Register a UDF called "custmToUpper" and implement the code to convert incoming value to uppercase
+        // use String's toUpperCase() inbuilt function
 
+        // TODO: Use the UDF inside withColumn API to transform a column "value" to uppercase
 
-        //TODO Step1: Create a temporary view on top of ratings dataset
-
-
-        //TODO Step2: Run SQL query against the temporary view to count total ratings given to each movie
-        //Use group by movieId clause
-
-        //TODO Step3: print the result
+        // TODO : Show the result
 
         // Stop the SparkSession
         spark.stop();
