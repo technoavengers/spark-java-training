@@ -1,13 +1,13 @@
-package main.training.Spark.Spark_Integrations;
+package main.training.Spark.Delta_Tables;
 
 import org.apache.spark.SparkConf;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
-import org.apache.spark.sql.SparkSession;
 import org.apache.spark.sql.SaveMode;
+import org.apache.spark.sql.SparkSession;
 
 
-public class Working_With_Delta {
+public class Reading_From_Delta_Tables {
     public static void main(String[] args) {
         // Configure Spark
         SparkConf conf = new SparkConf()
@@ -19,15 +19,11 @@ public class Working_With_Delta {
                 .getOrCreate();
 
 
-        //Create a Dataset from customers.csv file
-        Dataset<Row> dataset = spark.read().option("header", true).csv("src/main/resources/customers.csv");
+        String deltaTablePath = "/path/to/delta/table";
+        Dataset<Row> deltaTable = spark.read().format("delta").load(deltaTablePath);
 
 
-        // Write data to Delta Lake table
-        dataset.write()
-                .format("delta")
-                .mode(SaveMode.Append) // Choose the appropriate save mode
-                .save("customers");
+        deltaTable.show();
 
         // Stop Spark session
         spark.stop();
