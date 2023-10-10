@@ -22,9 +22,10 @@ public class challenge {
 
         //TODO Step4 --> Show the original ratings data
 
-        //TODO Step5 --> Filter movies with ratings greater than 3
-
-        //TODO Step6 --> Add a new column "category" based on the rating
+        //TODO Step5 --> Add a new column "category" based on the rating
+        // rating < 3 average
+        // rating between 3 and 4 , good
+        // rating > 4 , excellent
 
         //TODO Step7 -->  Show the filtered and categorized data
 
