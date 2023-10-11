@@ -19,7 +19,7 @@ public class Reading_From_Delta_Tables {
                 .getOrCreate();
 
 
-        String deltaTablePath = "/path/to/delta/table";
+        String deltaTablePath = "file:///home/training/spark-java-training/customers";
         Dataset<Row> deltaTable = spark.read().format("delta").load(deltaTablePath);
 
 

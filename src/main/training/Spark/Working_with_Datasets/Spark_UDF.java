@@ -81,13 +81,13 @@ public class Spark_UDF {
         userData
                 .withColumn("country"
                         ,callUDF("normalisedCountry",col("country")))
-                .show();
+                .explain();
 
 
         //Using Spark USF with Spark SQL
         userData.createOrReplaceTempView("users");
         spark.sql("select id,name,normalisedCountry(country) as country from users")
-                .show();
+                .explain();
 
 
 

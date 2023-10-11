@@ -24,16 +24,16 @@ public class Updating_Delta_Tables {
                 .getOrCreate();
 
 
-        DeltaTable deltaTable = DeltaTable.forPath(spark, "path");
+        DeltaTable deltaTable = DeltaTable.forPath(spark, "file:///home/training/spark-java-training/customers");
 
         // Create a DataFrame (df) with updated data
         // For simplicity, assume df is created from some data source
         Dataset<Row> df = spark.read().format("csv")
                 .option("header", "true")
-                .load("/path/to/source.csv");
+                .load("src/main/resources/customers_updated.csv");
 
         // Define a condition to match rows for update (e.g., based on a unique key)
-        String updateCondition = "id = source.id";
+        String updateCondition = "target.id = source.id";
 
 
         // Perform the update operation
