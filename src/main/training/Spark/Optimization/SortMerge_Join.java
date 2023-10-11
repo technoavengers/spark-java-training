@@ -34,7 +34,7 @@ public class SortMerge_Join {
         Dataset<Row> joinedDF = tagsDS.join(ratingsDS, "movieId");
 
 
-        joinedDF.show();
+        joinedDF.explain();
 
         try {
             Thread.sleep(30000);

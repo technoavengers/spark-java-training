@@ -54,6 +54,12 @@
             <artifactId>hadoop-aws</artifactId>
             <version>3.3.1</version> <!-- Use the latest version compatible with your Spark version -->
         </dependency>
+
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.0.27</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-hdfs -->
 
 

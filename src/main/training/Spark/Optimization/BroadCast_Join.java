@@ -31,9 +31,9 @@ public class BroadCast_Join {
         Dataset<Row> ratingsDS = spark.read().option("header", true).csv("src/main/resources/ratings_new.csv");
 
 
-        Dataset<Row> joinedDF = moviesDs.join(ratingsDS, "movieId");
+        Dataset<Row> joinedDF = ratingsDS.join(moviesDs,moviesDs.col("movieId").equalTo(ratingsDS.col("movieId")),"outer");
 
-        joinedDF.show();
+        joinedDF.explain();
 
         try {
             Thread.sleep(30000);

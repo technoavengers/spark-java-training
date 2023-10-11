@@ -36,7 +36,7 @@ public class Forced_Broadcast_Join {
         Dataset<Row> joinedDF = tagsDS.join(broadcast(ratingsDS), "movieId");
 
 
-        joinedDF.show();
+        joinedDF.explain();
 
         try {
             Thread.sleep(30000);
