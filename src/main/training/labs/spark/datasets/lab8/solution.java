@@ -27,6 +27,19 @@ public class solution {
                 .csv("src/main/resources/ratings_new.csv");
 
 
+        //TODO: Step2 --> Add a new colum rating_category such that
+        /*
+         WHEN rating <= 3 THEN 'Average' " +
+                "        WHEN rating > 3 AND rating < 4 THEN 'Good' " +
+                "        WHEN rating >= 4 THEN 'Excellent' "
+         */
+        ratingsDF
+                .withColumn("rating_category",
+                        when(col("rating").leq(3),lit("Average"))
+                                .when(col("rating").gt(3).and(col("rating").lt(4)),lit("Good"))
+                                .when(col("rating").geq(4).and(col("rating").leq(5)),lit("Excellent"))
+                                .otherwise(lit("Invalid")))
+                .show();
 
         // Stop the SparkSession
         spark.stop();
