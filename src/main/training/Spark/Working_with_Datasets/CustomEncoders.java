@@ -46,7 +46,7 @@ public class CustomEncoders {
                 .getOrCreate();
 
         // Specify the path to the CSV file
-        String filePath = "path/to/your/file.csv";
+        String filePath = "src/main/resources/file.csv";
 
         // Define a custom encoder for the Person class
         Encoder<Person> personEncoder = Encoders.bean(Person.class);
@@ -54,11 +54,12 @@ public class CustomEncoders {
         // Read the CSV file and use the custom encoder
         Dataset<Person> df = spark.read()
                 .option("header", "true")
+                .option("inferSchema","true")
                 .csv(filePath)
                 .as(personEncoder);
 
         // Show the DataFrame
-        df.show();
+        df.filter((FilterFunction<Person>) person  -> person.getAge() > 25).show();
 
         // Stop the Spark session
         spark.stop();
