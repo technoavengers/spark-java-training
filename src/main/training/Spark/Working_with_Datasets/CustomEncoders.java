@@ -1,5 +1,6 @@
 package main.training.Spark.Working_with_Datasets;
 
+import org.apache.spark.api.java.function.FilterFunction;
 import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.*;
 
